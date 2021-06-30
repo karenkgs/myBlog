@@ -15,7 +15,6 @@
   "files": [
     "dist"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^24.0.9",
     "@types/node": "^8.0.57",
