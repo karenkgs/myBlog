@@ -17,7 +17,7 @@ target/
 # Mac
 .DS_Store
 
-#Netbeans
+# Netbeans
 nb-*.xml
 nbactions-*.xml
 
@@ -28,6 +28,9 @@ node_modules/
 # local env files
 .env.local
 .env.*.local
+
+# config files
+config/
 
 # Log files
 npm-debug.log*
