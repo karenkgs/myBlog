@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import log from '../logger';
 import config from 'config';
 
-function connect() {
+function connectToDatabase() {
     const dbUri = config.get('dbUri') as string;
 
     return mongoose
@@ -19,4 +19,4 @@ function connect() {
         });
 }
 
-export default connect;
+export default connectToDatabase;

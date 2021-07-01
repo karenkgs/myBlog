@@ -1,6 +1,7 @@
 import { AnySchema } from 'yup';
 import { Request, Response, NextFunction } from 'express';
 import log from '../logger';
+import { BAD_REQUEST_RESPONSE_CODE } from '../constants';
 
 const validate = (schema: AnySchema) => async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -13,7 +14,7 @@ const validate = (schema: AnySchema) => async (req: Request, res: Response, next
         return next();
     } catch (e) {
         log.error(e);
-        return res.status(400).send(e.errors);
+        return res.status(BAD_REQUEST_RESPONSE_CODE).send(e.errors);
     }
 };
 

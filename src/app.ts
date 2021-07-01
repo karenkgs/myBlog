@@ -1,6 +1,6 @@
 import express from 'express';
 import log from './logger';
-import connect from './db/connect';
+import connectToDatabase from './db/connect';
 import config from 'config';
 import routes from './routes';
 import { deserializeUser } from './middleware';
@@ -16,8 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.listen(port, host, () => {
     log.info(`Server listing at http://${host}:${port}`);
-
-    connect();
-
+    connectToDatabase();
     routes(app);
 });

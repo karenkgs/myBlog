@@ -34,10 +34,8 @@ export async function reIssueAccessToken({ refreshToken }: { refreshToken: strin
 
     if (!decoded || !get(decoded, '_id')) return false;
 
-    // Get the session
     const session = await Session.findById(get(decoded, '_id'));
 
-    // Make sure the session is still valid
     if (!session || !session?.valid) return false;
 
     const user = await findUser({ _id: session.user });

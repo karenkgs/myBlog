@@ -4,12 +4,13 @@ import { Request, Response } from 'express';
 import { loginUser } from '../service/user.service';
 import { createSession, createAccessToken, updateSession, findSessions } from '../service/session.service';
 import { sign } from '../utils/jwt.utils';
+import { UNAUTHORIZED_RESPONSE_CODE, SUCCESS_RESPONSE_CODE } from '../constants';
 
 export async function createUserSessionHandler(req: Request, res: Response) {
     const user = await loginUser(req.body);
 
     if (!user) {
-        return res.status(401).send('Invalid username or password');
+        return res.status(UNAUTHORIZED_RESPONSE_CODE).send('Invalid username or password');
     }
 
     const session = await createSession(user._id, req.get('user-agent') || '');
@@ -18,7 +19,7 @@ export async function createUserSessionHandler(req: Request, res: Response) {
         session,
     });
     const refreshToken = sign(session, {
-        expiresIn: config.get('refreshTokenTtl'), // 1 year
+        expiresIn: config.get('refreshTokenTtl'),
     });
 
     // send refresh & access token back
@@ -30,7 +31,7 @@ export async function invalidateUserSessionHandler(req: Request, res: Response) 
 
     await updateSession({ _id: sessionId }, { valid: false });
 
-    return res.sendStatus(200);
+    return res.sendStatus(SUCCESS_RESPONSE_CODE);
 }
 
 export async function getUserSessionsHandler(req: Request, res: Response) {
