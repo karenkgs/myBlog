@@ -12,5 +12,6 @@ module.exports = {
     rules: {
       // Place to specify new ESLint rules and rules that will override the
       //recommended ones.
+      "@typescript-eslint/ban-ts-ignore": "off"
     }
 };
