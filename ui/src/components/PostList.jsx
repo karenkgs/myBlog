@@ -3,9 +3,9 @@ import ImgToLeftPost from './ImgToLeftPost';
 import ImgToRightPost from './ImgToRightPost';
 
 const PostList = (props) => {
-  const { repos: posts } = props;
+  const { posts } = props;
 
-  if (!posts || posts.length === 0) return <p>No repos, sorry</p>;
+  if (!posts || posts.length === 0) return <p>No posts, sorry</p>;
   
   var postComponents = [];
 

@@ -24,7 +24,7 @@ function Home() {
       <div class="container">
         <PostListLoading
          isLoading={appState.loading}
-         repos={appState.repos}
+         posts={appState.repos}
         />
       </div>
     </div>
